@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t fallnomega/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true fallnomega/react-test npm test
+
+after_success:
+  - docker build -t fallnomega/multi-client ./client
+  - docker build -t fallnomega/multi-nginx ./nginx
+  - docker build -t fallnomega/multi-server ./server
+  - docker build -t fallnomega/multi-worker ./worker
