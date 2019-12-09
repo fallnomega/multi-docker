@@ -13,3 +13,13 @@ after_success:
   - docker build -t fallnomega/multi-nginx ./nginx
   - docker build -t fallnomega/multi-server ./server
   - docker build -t fallnomega/multi-worker ./worker
+
+#log into docker CLI
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+- docker push fallnomega/multi-client
+- docker push fallnomega/multi-nginx
+- docker push fallnomega/multi-server
+- docker push fallnomega/multi-worker
+
+
+
