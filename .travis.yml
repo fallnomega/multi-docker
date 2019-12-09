@@ -20,6 +20,3 @@ after_success:
 - docker push fallnomega/multi-nginx
 - docker push fallnomega/multi-server
 - docker push fallnomega/multi-worker
-
-
-
