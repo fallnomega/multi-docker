@@ -21,4 +21,15 @@ after_success:
   - docker push fallnomega/multi-server
   - docker push fallnomega/multi-worker
 
-#test
+#travis to aws
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-2-318069367928
+  backet_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET KEY
