@@ -23,6 +23,7 @@ after_success:
 
 #travis to aws
 deploy:
+  edge: true
   provider: elasticbeanstalk
   region: us-west-2
   app: multi-docker
